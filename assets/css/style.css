@@ -1,0 +1,123 @@
+    
+    
+    /* * {
+        border: 2px solid red;
+    } */
+
+body, html {
+    height: 100%;
+    margin: 0;
+}
+
+.bg {
+    /* The image used */
+    background: url("../images/PlainStarWars.jpg");
+    /* Full height */
+    height: 100%; 
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+    /* My previous find */
+    /* background-repeat:repeat-y; */
+    /* background-size: 100%; */
+}
+
+#game-title {
+    font-family: 'Bungee', cursive;
+    text-align:right;
+    font-weight: 900;
+    font-size: 50px;
+    float: right;
+    max-height: 100px;
+    padding-right: 200px;
+    margin: 0px;
+    margin-top: -90px;
+}
+
+ /* #choose-player { */
+    .choice-text {
+    font-family: 'Bungee', cursive;
+    font-size: 24px;
+    font-weight: 900;
+    margin: 0px;
+}
+
+/* #choose-enemy {
+    font-family: 'Bungee', cursive;
+    font-size: 24px;
+    font-weight: 900;
+    margin: 0px;
+} */
+
+
+.button-attack {
+    font-family: 'Bungee', cursive !Important;
+    text-align: center;
+    font-weight: 900;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    color: white;
+    margin-top: 0px;
+    padding: 0px;
+    background-color: red;
+}
+
+
+/****************/
+/* Page Buttons */
+/****************/
+.button-char {
+    /* margin:2px; */
+    background-color: white;
+    block-size: 120px;
+}
+
+#arrow {
+    display: none;
+    padding: 0px;
+    /* float: left; */
+} 
+
+/* #obiwan-k {
+    border: solid 15px white;
+} 
+
+#luke-s {
+    border: solid 15px white;
+}
+
+#d-sidious {
+    border: solid 15px white;
+}
+
+#d-maul {
+    border: solid 15px white;
+} */
+
+/**** Enemies ***/
+/* #e-obiwan-k {
+    border: solid 15px red;
+}
+
+#e-luke-s {
+    border: solid 15px red;
+}
+
+#e-d-sidious {
+    border: solid 15px red;
+}
+
+#e-d-maul {
+    border: solid 15px red;
+} */
+
+.button-big {
+    background: url("../images/ProfileWolfPic_400.jpg") no-repeat;
+    background-size: 100%;
+}
+
+
+
+
