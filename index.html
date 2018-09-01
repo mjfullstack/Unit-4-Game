@@ -44,17 +44,17 @@
         </div>
         <div class="row">
             <div class="col-lg-4 col-md-6 col-sm-12">
-                <button class="button-char">
-                    <img id="obiwan-k" src="./assets/images/ObiWanKenobi.jpg" alt="ObiWanKenobi">
+                <button class="button-char pick-me" id="obiwan-k-sel">
+                    <img id="obiwan-k-pic" src="./assets/images/ObiWanKenobi.jpg" alt="ObiWanKenobi">
                 </button>
-                <button  class="button-char">
-                        <img id="luke-s" src="./assets/images/LukeS.jpg" alt="luke-s">
+                <button  class="button-char pick-me" id="luke-s-sel">
+                        <img id="luke-s-pic" src="./assets/images/LukeS.jpg" alt="luke-s">
                 </button>
-                <button class="button-char">
-                    <img id="d-sidious" src="./assets/images/DarthSidious.jpg" alt="DrSidious">
+                <button class="button-char pick-me" id="d-sidious-sel">
+                    <img id="d-sidious-pic" src="./assets/images/DarthSidious.jpg" alt="DrSidious">
                 </button>
-                <button  class="button-char">
-                    <img id="d-maul" src="./assets/images/DarthMaul.jpg" alt="DrMaul">
+                <button  class="button-char pick-me" id="d-maul-sel">
+                    <img id="d-maul-pic" src="./assets/images/DarthMaul.jpg" alt="DrMaul">
                 </button>
             </div>
         </div>
@@ -66,15 +66,42 @@
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-4">
-                <button class="button-char">  <!-- style="width: 150px; height: 110px;" -->
+                <button class="button-char pick-enemy">  <!-- style="width: 150px; height: 110px;" -->
                     <img id="e-obiwan-k" src="./assets/images/ObiWanKenobi.jpg" alt="ObiWanKenobi">
                 </button>
-                <button  class="button-char">
+                <button  class="button-char pick-enemy">
                         <img id="e-luke-s" src="./assets/images/LukeS.jpg" alt="luke-s">
                 </button>
-                <button class="button-char">
+                <button class="button-char pick-enemy">
                     <img id="e-d-sidious" src="./assets/images/DarthSidious.jpg" alt="DrSidious">
                 </button>
+                <button  class="button-char pick-enemy">
+                    <img id="e-d-maul" src="./assets/images/DarthMaul.jpg" alt="DrMaul">
+                </button>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <p class="choice-text" id="choose-enemy">Fight Section...</p>
+            </div>
+            <div class="col-lg-6">
+                <button style="width: 250px; height: 60px;" class="button-attack">⚡️ Attack! Attack! ⚡️</button>
+                <div id="arrow">
+                    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡️&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡️</h2>
+                    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡️&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡️</h2>
+                    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡️&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡️</h2>
+                    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡️&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡️</h2>
+                    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡️&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡️</h2>
+                    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡️&nbsp;&nbsp;&nbsp;⚡️</h2>
+                    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <p class="choice-text" id="choose-enemy">Defender...</p>
+            </div>
+            <div class="col-lg-6">
                 <button  class="button-char">
                     <img id="e-d-maul" src="./assets/images/DarthMaul.jpg" alt="DrMaul">
                 </button>
@@ -85,7 +112,6 @@
     <!-- <button style="width: 120px; height: 70px;" class="button-char"> -->
 
 
-</body>
     
     <!-- <br><br> -->
     <!-- <button style="width: 120px; height: 70px;" class="button-char"> -->
@@ -105,6 +131,8 @@
 
     <!-- <h1>⚡️ Attack! Attack! ⚡️</h1> -->
 
+
+    <!-- This is the attack lightning bolt development area...
     <button style="width: 250px; height: 60px;" class="button-attack">⚡️ Attack! Attack! ⚡️</button>
     <div id="arrow">
         <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡️&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡️</h2>
@@ -115,11 +143,15 @@
         <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡️&nbsp;&nbsp;&nbsp;⚡️</h2>
         <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡</h2>
     </div>
+     -->
+
+
     <!-- <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡️⚡️</h2> -->
     <!-- <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;⚡️  ⚡️</h1> -->
     <!-- <div class="thread-view list-view" role="region" aria-label="⚡️ Insider is back! ⚡️"><article class="list-item mail-item mail-detail f6-target focusable expanded" data-cid="default0/INBOX.86023" aria-expanded="true" data-loaded="true" aria-label="Email from CTA Communications: ⚡️ Insider is back! ⚡️" tabindex="-1" style="z-index: 1;"><header class="detail-view-header"><div class="contact-picture" aria-hidden="true" data-drag-data="default0/INBOX.86023" data-drag-message="⚡️ Insider is back! ⚡️" data-original="v=7.8.4-33.20180611.032428/apps/themes/io.ox.cox/fallback-image-contact.png" style="background-image: url(&quot;v=7.8.4-33.20180611.032428/apps/themes/io.ox.cox/fallback-image-contact.png&quot;);"></div><a href="#" role="button" class="unread-toggle io-ox-action-link" data-action="unread-toggle" aria-label="Read" aria-pressed="false"><i class="fa" aria-hidden="true" title="Read"></i></a><div class="detail-view-row row-1 clearfix"><div class="from"><a href="#" role="button" class="halo-link person-link person-from ellipsis">CTA Communications</a><span class="address">&lt;ctacommunications@cta-mailings.org&gt;</span></div><time class="date" datetime="2018-08-29T18:43:05.000Z">8/29/2018 2:43 PM</time><div class="dropdown flag-picker"><a href="#" aria-label="Set color" class="dropdown-toggle" aria-haspopup="true" aria-expanded="false" role="button" data-toggle="dropdown"><i class="flag-dropdown-icon flag_0 fa fa-bookmark-o" aria-hidden="true" title="Set color" data-color="0"></i></a><ul class="dropdown-menu" role="menu"><li role="presentation"><a href="#" role="menuitem" class="io-ox-action-link" data-color="0" data-action="color-none">None</a></li><li role="presentation"><a href="#" role="menuitem" class="io-ox-action-link" data-color="1" data-action="color-red"><span class="flag-example flag_bg_1" aria-hidden="true"></span>Red</a></li><li role="presentation"><a href="#" role="menuitem" class="io-ox-action-link" data-color="2" data-action="color-blue"><span class="flag-example flag_bg_2" aria-hidden="true"></span>Blue</a></li><li role="presentation"><a href="#" role="menuitem" class="io-ox-action-link" data-color="3" data-action="color-green"><span class="flag-example flag_bg_3" aria-hidden="true"></span>Green</a></li><li role="presentation"><a href="#" role="menuitem" class="io-ox-action-link" data-color="4" data-action="color-gray"><span class="flag-example flag_bg_4" aria-hidden="true"></span>Gray</a></li><li role="presentation"><a href="#" role="menuitem" class="io-ox-action-link" data-color="5" data-action="color-purple"><span class="flag-example flag_bg_5" aria-hidden="true"></span>Purple</a></li><li role="presentation"><a href="#" role="menuitem" class="io-ox-action-link" data-color="6" data-action="color-lightgreen"><span class="flag-example flag_bg_6" aria-hidden="true"></span>Light green</a></li><li role="presentation"><a href="#" role="menuitem" class="io-ox-action-link" data-color="7" data-action="color-orange"><span class="flag-example flag_bg_7" aria-hidden="true"></span>Orange</a></li><li role="presentation"><a href="#" role="menuitem" class="io-ox-action-link" data-color="8" data-action="color-pink"><span class="flag-example flag_bg_8" aria-hidden="true"></span>Pink</a></li><li role="presentation"><a href="#" role="menuitem" class="io-ox-action-link" data-color="9" data-action="color-lightblue"><span class="flag-example flag_bg_9" aria-hidden="true"></span>Light blue</a></li><li role="presentation"><a href="#" role="menuitem" class="io-ox-action-link" data-color="10" data-action="color-yellow"><span class="flag-example flag_bg_10" aria-hidden="true"></span>Yellow</a></li></ul></div></div><div class="detail-view-row row-2 clearfix"></div><div class="detail-view-row row-3 clearfix"><div class="recipients"><span class="io-ox-label">To&nbsp;&nbsp;</span><a href="#" role="button" class="halo-link person-link person-to" title="mjohnson3@cox.net">mjohnson3@cox.net</a> &nbsp; </div></div><div class="detail-view-row row-4 clearfix"></div><div class="detail-view-row row-5 clearfix"><ul class="list-unstyled actions pull-right" role="menubar" aria-label="Inline menu "><li role="presentation"><a class="io-ox-action-link" href="#" data-action="reply-all" draggable="false" role="menuitem" data-section="standard" data-prio="hi" data-ref="io.ox/mail/actions/reply-all">Reply all</a></li><li role="presentation"><a class="io-ox-action-link" href="#" data-action="forward" draggable="false" role="menuitem" data-section="standard" data-prio="hi" data-ref="io.ox/mail/actions/forward">Forward</a></li><li role="presentation"><a class="io-ox-action-link" href="#" data-action="delete" draggable="false" role="menuitem" data-section="standard" data-prio="hi" data-ref="io.ox/mail/actions/delete">Delete</a></li><li class="dropdown"><a href="#" class="io-ox-action-link" draggable="false" role="button" data-toggle="dropdown" data-action="more" aria-haspopup="true" data-original-title="More actions" aria-expanded="false" data-placement="bottom" data-animation="false" data-container="body"><span class="sr-only">Actions</span><i aria-hidden="true" class="fa fa-bars"></i></a><ul class="dropdown-menu pull-right" role="menu" aria-label="More"><li role="presentation"><a class="io-ox-action-link" href="#" data-action="reply" draggable="false" role="menuitem" data-section="standard" data-prio="lo" data-ref="io.ox/mail/actions/reply">Reply</a></li><li class="divider" role="separator"></li><li role="presentation"><a class="io-ox-action-link" href="#" data-action="spam" draggable="false" role="menuitem" data-section="flags" data-prio="lo" data-ref="io.ox/mail/actions/spam">Mark as spam</a></li><li class="divider" role="separator"></li><li role="presentation"><a class="io-ox-action-link" href="#" data-action="sendmail" draggable="false" role="menuitem" data-section="recipients" data-prio="lo" data-ref="io.ox/mail/actions/sendmail">Send new mail</a></li><li role="presentation"><a class="io-ox-action-link" href="#" data-action="invite-to-appointment" draggable="false" role="menuitem" data-section="recipients" data-prio="lo" data-ref="io.ox/mail/actions/invite">Invite to appointment</a></li><li role="presentation"><a class="io-ox-action-link" href="#" data-action="save-as-distlist" draggable="false" role="menuitem" data-section="recipients" data-prio="lo" data-ref="io.ox/mail/actions/createdistlist">Save as distribution list</a></li><li class="divider" role="separator"></li><li role="presentation"><a class="io-ox-action-link" href="#" data-action="move" draggable="false" role="menuitem" data-section="file-op" data-prio="lo" data-ref="io.ox/mail/actions/move">Move</a></li><li role="presentation"><a class="io-ox-action-link" href="#" data-action="copy" draggable="false" role="menuitem" data-section="file-op" data-prio="lo" data-ref="io.ox/mail/actions/copy">Copy</a></li><li role="presentation"><a class="io-ox-action-link" href="#" data-action="archive" draggable="false" role="menuitem" data-section="file-op" data-prio="lo" data-ref="io.ox/mail/actions/archive">Archive</a></li><li class="divider" role="separator"></li><li role="presentation"><a class="io-ox-action-link" href="#" data-action="print" draggable="false" role="menuitem" data-section="export" data-prio="lo" data-ref="io.ox/mail/actions/print">Print</a></li><li role="presentation"><a class="io-ox-action-link" href="#" data-action="save-as-eml" draggable="false" role="menuitem" data-section="export" data-prio="lo" data-ref="io.ox/mail/actions/save">Save as file</a></li><li role="presentation"><a class="io-ox-action-link" href="#" data-action="source" draggable="false" role="menuitem" data-section="export" data-prio="lo" data-ref="io.ox/mail/actions/source">View source</a></li><li class="divider" role="separator"></li><li role="presentation"><a class="io-ox-action-link" href="#" data-action="filter" draggable="false" role="menuitem" data-section="file-op" data-prio="lo" data-ref="io.ox/mail/actions/filter">Create filter rule</a></li><li class="divider" role="separator"></li><li role="presentation"><a class="io-ox-action-link" href="#" data-action="block-sender" draggable="false" role="menuitem" data-section="sender" data-prio="lo" data-ref="io.ox/mail/actions/blacklist" data-toggle="tooltip" data-placement="bottom" data-animation="false" data-container="body" aria-label="Block sender">Block sender</a></li></ul></li></ul></div></header><section class="notifications"><div class="itip"></div></section><section class="warnings"></section><section class="error" style="display: none;"></section><section class="attachments"></section><section class="body user-select-text focusable shadow-root-container" tabindex="-1"></section></article></div> -->
 
     <br><br><br>
+
 <!-- 
     <button style="width: 250px; height: 100px;" class="button-big">
         </button>
@@ -127,50 +159,18 @@
         <i>Content ...</i>
         </p>
 -->
-        <br><br><br>
+    <br><br><br>
     
 
 
-    <script>
-
-
-// 
-//     var toggled = false;
-//     $(".button-big").click(function() {
-//         if (!toggled) {
-//             $(this).css( "background", "url(assets/images/225x150_MinistryApp.jpg) no-repeat");
-//             toggled = true;
-//         } else {
-//             $(this).css( "background", "url(assets/images/ProfileWolfPic_400.jpg) no-repeat");
-//             toggled = false;
-//         }
-//  
-        // $("p").slideToggle();
-    // } );
-
-$(document).ready(function(){
-    $(".button-attack").mouseup(function(){
-        $(this).after($("#arrow").css("display", "none") );
-    } );
-    $(".button-attack").mousedown(function(){
-        $(this).after($("#arrow").css("display", "block") );
-    } );
-} );
-
-var bkgrndWhite = true;
-$(document).ready(function(){
-    $(".button-attack").on("click", function() {
-        if (bkgrndWhite) {
-            $(".button-char").css("background-color", "red");
-            bkgrndWhite = false;
-        } else {
-            $(".button-char").css("background-color", "white");
-            bkgrndWhite = true;
-        }
-    } );
-} );
-
-
+    <script src="assets/javascript/game.js"></script>
+<script>
+// Call functions in starWars Object
+// initGame
+// getFighter
+// getEnemy
+// playGame (Attack and calc results)
+// $('button-attack).on("click", doCalcs(); updateScreen(); )
 
 </script>
 </div>
