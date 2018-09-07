@@ -10,7 +10,7 @@ body, html {
 }
 
 .bg {
-    /* The image used */
+    /* The BACKGROUND image used */
     background: url("../images/PlainStarWars.jpg");
     /* Full height */
     height: 100%; 
@@ -37,21 +37,22 @@ body, html {
     margin-top: -90px;
 }
 
- /* #choose-player { */
-    .choice-text {
+/* NEW INFO: Only ONE location per ID, otherwise make it a class */
+.button-name {
+    margin: 0px;
+}
+
+.button-hp {
+    margin: 0px;
+}
+
+.choice-text {
+    clear: both;
     font-family: 'Bungee', cursive;
     font-size: 24px;
     font-weight: 900;
     margin: 0px;
 }
-
-/* #choose-enemy {
-    font-family: 'Bungee', cursive;
-    font-size: 24px;
-    font-weight: 900;
-    margin: 0px;
-} */
-
 
 .button-attack {
     font-family: 'Bungee', cursive !Important;
@@ -70,9 +71,24 @@ body, html {
 /* Page Buttons */
 /****************/
 .button-char {
-    /* margin:2px; */
-    background-color: white;
+    border:4px green solid;
+    float: left;
     block-size: 120px;
+}
+
+.pick-me, .player-picked {
+    background-color: white;
+    display: block;
+}
+
+.pick-enemy {
+    background-color: red;
+    display: none;
+}
+
+.pick-defender, .defender-picked {
+    background-color: black;
+    display: none;
 }
 
 #arrow {
@@ -114,10 +130,6 @@ body, html {
     border: solid 15px red;
 } */
 
-.button-big {
-    background: url("../images/ProfileWolfPic_400.jpg") no-repeat;
-    background-size: 100%;
-}
 
 
 
