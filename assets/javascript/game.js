@@ -7,16 +7,62 @@ $(document).ready(function(){
     function  Warrior (objectID, name, healthPoints, attackPwr, counterAttPwr, role, dispState ) { // Constructor
         this.name = name;
         this.hp = healthPoints;
-        this.aPwr = attackPwr;
+        this.aPwrBase = attackPwr; // Initialized current attack power to same value
+        this.aPwr = attackPwr; // Initialized current attack power to same value
         this.caPwr = counterAttPwr;
         this.role = role; // pick-me, fighter, enemy, defender, dead
         this.display = dispState;
         this.objectID = objectID;
+        this.enemiesLeft = 3;
     } ;
     
+
+    Warrior.prototype.getCaPwr = function() {
+        return this.caPwr;
+    };
+
+    Warrior.prototype.getaPwr = function() {
+        return this.aPwr;
+    };
+
+    Warrior.prototype.calcStats = function() {
+        if ( this.role === "fighter") { // This is the player's warrior!
+            this.hp = this.hp - defender.getCaPwr();
+            this.aPwr = this.aPwr + this.aPwrBase;
+        } else if (this.role === "defender" ){
+            this.hp = this.hp - player.getaPwr();
+        } else {
+            console.log("calcStats called when warrior is not fighter or defender! objectID.role =" + this.objectID + "." + this.role);
+        };
+    };
+
+    Warrior.prototype.checkStatus = function() {
+        if ( this.role === "fighter") { // This is the player's warrior!
+            if ( this.hp <= 0 ) {
+                console.log("Player's Warrior LOST. objectID.hp =" + this.objectID + "." + this.hp + ", Play Again?");
+            } else {
+                console.log("Awesome, you're still in the game!");
+            }
+        } else if (this.role === "defender" ){
+            if ( this.hp <= 0 ) {
+                player.enemiesLeft = player.enemiesLeft - 1;
+                console.log("Defender's Warrior, " + this.name + " LOST. objectID.hp =" + this.objectID + "." + this.hp);
+                console.log("Fighter's Warrior, " + player.getName() + ", WON. player.enemiesLeft =" + player.objectID + "." + player.enemiesLeft);
+                if ( player.enemiesLeft <= 0 ) {
+                    console.log("!!! YOU WON !!!")
+                } else {
+                    console.log("Select next enemy...");
+                }
+            }
+        } else {
+            console.log("checkStatus called when warrior is not fighter or defender! objectID.role =" + this.objectID + "." + this.role);
+        };
+    };
+
     Warrior.prototype.printStats = function() {
         console.log("name = " + this.name);
         console.log("hp = " + this.hp);
+        console.log("aPwrBase = " + this.aPwrBase);
         console.log("aPwr = " + this.aPwr);
         console.log("caPwr = " + this.caPwr);
         console.log("role = " + this.role);
@@ -79,23 +125,37 @@ $(document).ready(function(){
     // Dont show enemies until after player chooses their fighter
     $(".pick-enemy").hide();
 
+    ///////////////////
     // ATTACK BUTTON //
+    ///////////////////
     $(".button-attack").mouseup(function(){
         $(this).after($("#arrow").css("display", "none") );
     } );
     $(".button-attack").mousedown(function(){
         $(this).after($("#arrow").css("display", "block") );
-        player.hp = player.hp - 10;
-        console.log("player.getObjectID() = " + player.getObjectID());
-        console.log("player.hp.toString().hp = " + player.hp.toString());
-        player.printStats();
-        $(".player-picked .button-hp").text(player.hp.toString()); // player-picked
-        defender.hp = defender.hp - 20;
-        console.log("defender.getObjectID() = " + defender.getObjectID());
-        console.log("defender.hp.toString().hp = " + defender.hp.toString());
-        defender.printStats();
-        $(".defender-picked .button-hp").text(defender.hp.toString()); // defender-picked
 
+        // Update Defender Stats first to get current attack power from fighter to subtract
+        defender.calcStats();
+        // Update Player / Fighter
+        player.calcStats();
+
+        // Check Player / Fighter Status
+        player.checkStatus();
+        console.log("player.getObjectID() = " + player.getObjectID());
+        // console.log("player.hp.toString() = " + player.hp.toString());
+        console.log("player.getHp() = " + player.getHp());
+        player.printStats();
+        // $(".player-picked .button-hp").text(player.hp.toString()); // player-picked
+        $(".player-picked .button-hp").text(player.getHp()); // player-picked
+
+        // Check Defender's Status
+        defender.checkStatus();
+        console.log("defender.getObjectID() = " + defender.getObjectID());
+        // console.log("defender.hp.toString() = " + defender.hp.toString());
+        console.log("defender.getHp() = " + defender.getHp());
+        defender.printStats();
+        // $(".defender-picked .button-hp").text(defender.hp.toString()); // defender-picked
+        $(".defender-picked .button-hp").text(defender.getHp()); // defender-picked
     } );
     
     function updatePickMe (buttonID, myClass, myAction) { // myClass = pick-me 1st time, pick-enemy 2nd time
