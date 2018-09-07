@@ -37,26 +37,44 @@ $(document).ready(function(){
         this.objectID = newObjectID;
     };
 
+    Warrior.prototype.getHp = function() {
+        return this.hp.toString();
+    };
+    Warrior.prototype.setHp = function(newHp) {
+        this.name = newHp;
+    };
 
     var obiWanWarrior = new Warrior("obiWanWarrior", "Obi Wan-Kenobi", 125, 6, 22, "pick-me", "block");
     // console.log("obiWanWarrior.name = " + obiWanWarrior.getName());
     // console.log("obiWanWarrior.objectID = " + obiWanWarrior.getObjectID() );
     obiWanWarrior.printStats();
+    $(".button-name-obiwan").text(obiWanWarrior.name);
+    $(".button-hp-obiwan").text(obiWanWarrior.hp);
 
     var lukeWarrior = new Warrior("lukeWarrior", "Luke Skywalker", 160, 4, 15, "pick-me", "block");
     lukeWarrior.printStats();
+    $(".button-name-luke").text(lukeWarrior.name);
+    $(".button-hp-luke").text(lukeWarrior.hp);
 
-    var dSidiousWarrior = new Warrior("dSidious", "Darth Sidious", 100, 10, 10, "pick-me", "block");
+    var dSidiousWarrior = new Warrior("dSidiousWarrior", "Darth Sidious", 100, 10, 10, "pick-me", "block");
     dSidiousWarrior.printStats();
+    $(".button-name-dsidious").text(dSidiousWarrior.name);
+    $(".button-hp-dsidious").text(dSidiousWarrior.hp);
 
-    var dMaulWarrior = new Warrior("dMaul", "Darth Maul", 200, 2, 12, "pick-me", "block");
+    var dMaulWarrior = new Warrior("dMaulWarrior", "Darth Maul", 200, 2, 12, "pick-me", "block");
     dMaulWarrior.printStats();
+    $(".button-name-dmaul").text(dMaulWarrior.name);
+    $(".button-hp-dmaul").text(dMaulWarrior.hp);
 
     var player = new Warrior("player", "fighter", 1, 1, 1, "fighter", "block");
     player.printStats();
+    $(".button-name-player").text(player.name);
+    $(".button-hp-player").text(player.hp);
 
     var defender = new Warrior("defender", "defender", 2, 2, 2, "defender", "block");
     defender.printStats();
+    $(".button-name-defender").text(defender.name);
+    $(".button-hp-defender").text(defender.hp);
 
     // Dont show enemies until after player chooses their fighter
     $(".pick-enemy").hide();
@@ -64,15 +82,7 @@ $(document).ready(function(){
 
 
 
-function changeHtmlName (objectID) {
-    console.log( "this 'objectID' = " + objectID);
-    console.log( "typeof 'objectID' = " + toObject(objectID) );
-    console.log( "typeof 'objectID' = " + typeof(objectID) );
-    var buttonName = objectID.getName();
-    $("#button-name").html(buttonName);
-};
 
-// var name_html = "";
 
 
     $(".button-attack").mouseup(function(){
@@ -80,6 +90,25 @@ function changeHtmlName (objectID) {
     } );
     $(".button-attack").mousedown(function(){
         $(this).after($("#arrow").css("display", "block") );
+        player.hp = player.hp - 10;
+        console.log("player.getObjectID() = " + player.getObjectID());
+        console.log("player.getObjectID().hp = " + player.hp.toString());
+        player.printStats();
+        // var playerObj = player.getObjectID();
+        // var defenderObj = defender.getObjectID();
+        // console.log("playerObj = " + playerObj);
+        // console.log("defenderObj = " + defenderObj)
+        // var playerObjHp = playerObj.getHp();
+        // var defenderObjHp = defenderObj.getHp();
+        // console.log("playerObjHp = " + playerObjHp);
+        // console.log("defenderObjHp = " + defenderObjHp);
+        $(".button-hp-obiwan").text(player.hp.toString());
+        defender.hp = defender.hp - 20;
+        console.log("defender.getObjectID() = " + defender.getObjectID());
+        console.log("defender.getObjectID().hp = " + defender.hp.toString());
+        defender.printStats();
+        $(".button-hp-dmaul").text(defender.hp.toString());
+
     } );
     
     // var bkgrndWhite = true;

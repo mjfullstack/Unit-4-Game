@@ -71,7 +71,7 @@ body, html {
 /* Page Buttons */
 /****************/
 .button-char {
-    border:4px green solid;
+    border:3px green solid;
     float: left;
     block-size: 120px;
 }
@@ -88,6 +88,7 @@ body, html {
 
 .pick-defender, .defender-picked {
     background-color: black;
+    color: white;
     display: none;
 }
 
@@ -97,6 +98,14 @@ body, html {
     /* float: left; */
 } 
 
+p {
+    margin: 0px;
+}
+
+button {
+    font-family: 'Bungee', cursive;
+    line-height: 20px;
+}
 /* #obiwan-k {
     border: solid 15px white;
 } 
