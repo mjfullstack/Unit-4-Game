@@ -30,11 +30,21 @@ body, html {
     text-align:right;
     font-weight: 900;
     font-size: 50px;
-    float: right;
+    font-style: italic;
+    /* text-decoration: overline; */
+    text-decoration: underline;
+    text-decoration-style: solid;
+    text-decoration-color: darkgoldenrod;
+    text-align:right;
     max-height: 100px;
     padding-right: 200px;
     margin: 0px;
-    margin-top: -90px;
+    margin-top: -80px;
+}
+
+#title-end {
+    color:darkgoldenrod;
+    font-style: italic;
 }
 
 /* NEW INFO: Only ONE location per ID, otherwise make it a class */
@@ -60,6 +70,7 @@ body, html {
     font-weight: 900;
     font-family: 'Times New Roman', Times, serif;
     font-size: 18px;
+    font-style: italic;
     color: white;
     margin-top: 0px;
     padding: 0px;

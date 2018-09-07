@@ -47,44 +47,39 @@ $(document).ready(function(){
     var obiWanWarrior = new Warrior("obiWanWarrior", "Obi Wan-Kenobi", 125, 6, 22, "pick-me", "block");
     // console.log("obiWanWarrior.name = " + obiWanWarrior.getName());
     // console.log("obiWanWarrior.objectID = " + obiWanWarrior.getObjectID() );
-    obiWanWarrior.printStats();
+    // obiWanWarrior.printStats();
     $(".button-name-obiwan").text(obiWanWarrior.name);
     $(".button-hp-obiwan").text(obiWanWarrior.hp);
 
     var lukeWarrior = new Warrior("lukeWarrior", "Luke Skywalker", 160, 4, 15, "pick-me", "block");
-    lukeWarrior.printStats();
+    // lukeWarrior.printStats();
     $(".button-name-luke").text(lukeWarrior.name);
     $(".button-hp-luke").text(lukeWarrior.hp);
 
     var dSidiousWarrior = new Warrior("dSidiousWarrior", "Darth Sidious", 100, 10, 10, "pick-me", "block");
-    dSidiousWarrior.printStats();
+    // dSidiousWarrior.printStats();
     $(".button-name-dsidious").text(dSidiousWarrior.name);
     $(".button-hp-dsidious").text(dSidiousWarrior.hp);
 
     var dMaulWarrior = new Warrior("dMaulWarrior", "Darth Maul", 200, 2, 12, "pick-me", "block");
-    dMaulWarrior.printStats();
+    // dMaulWarrior.printStats();
     $(".button-name-dmaul").text(dMaulWarrior.name);
     $(".button-hp-dmaul").text(dMaulWarrior.hp);
 
     var player = new Warrior("player", "fighter", 1, 1, 1, "fighter", "block");
-    player.printStats();
+    // player.printStats();
     $(".button-name-player").text(player.name);
     $(".button-hp-player").text(player.hp);
 
     var defender = new Warrior("defender", "defender", 2, 2, 2, "defender", "block");
-    defender.printStats();
+    // defender.printStats();
     $(".button-name-defender").text(defender.name);
     $(".button-hp-defender").text(defender.hp);
 
     // Dont show enemies until after player chooses their fighter
     $(".pick-enemy").hide();
 
-
-
-
-
-
-
+    // ATTACK BUTTON //
     $(".button-attack").mouseup(function(){
         $(this).after($("#arrow").css("display", "none") );
     } );
@@ -92,36 +87,17 @@ $(document).ready(function(){
         $(this).after($("#arrow").css("display", "block") );
         player.hp = player.hp - 10;
         console.log("player.getObjectID() = " + player.getObjectID());
-        console.log("player.getObjectID().hp = " + player.hp.toString());
+        console.log("player.hp.toString().hp = " + player.hp.toString());
         player.printStats();
-        // var playerObj = player.getObjectID();
-        // var defenderObj = defender.getObjectID();
-        // console.log("playerObj = " + playerObj);
-        // console.log("defenderObj = " + defenderObj)
-        // var playerObjHp = playerObj.getHp();
-        // var defenderObjHp = defenderObj.getHp();
-        // console.log("playerObjHp = " + playerObjHp);
-        // console.log("defenderObjHp = " + defenderObjHp);
-        $(".button-hp-obiwan").text(player.hp.toString());
+        $(".player-picked .button-hp").text(player.hp.toString()); // player-picked
         defender.hp = defender.hp - 20;
         console.log("defender.getObjectID() = " + defender.getObjectID());
-        console.log("defender.getObjectID().hp = " + defender.hp.toString());
+        console.log("defender.hp.toString().hp = " + defender.hp.toString());
         defender.printStats();
-        $(".button-hp-dmaul").text(defender.hp.toString());
+        $(".defender-picked .button-hp").text(defender.hp.toString()); // defender-picked
 
     } );
     
-    // var bkgrndWhite = true;
-    // $(".button-attack").on("click", function() {
-    //     if (bkgrndWhite) {
-    //         $(".button-char").css("background-color", "red");
-    //         bkgrndWhite = false;
-    //     } else {
-    //         $(".button-char").css("background-color", "white");
-    //         bkgrndWhite = true;
-    //     };
-    // } );
-
     function updatePickMe (buttonID, myClass, myAction) { // myClass = pick-me 1st time, pick-enemy 2nd time
         console.log("START updatePickMe: buttonID = " + buttonID + "; myClass = " + myClass);
         $(buttonID).removeClass(myClass); // Remove from pick-me class
@@ -162,19 +138,11 @@ $(document).ready(function(){
     };
 
     
-    var showMyFighters = true;
     var playerChoseFighter = false;
-    // $("#obiwan-k-sel").on("click", function() { // WORKS FOR SPECIFIC BUTTON
-    // $(".pick-me").on("click", function() { // WORKS for CLASS pick-me of all buttons
     $(".button-char").on("click", function() { // WORKS for CLASS of all buttons-char
         var buttonID = "";
         var myClassPlayer = "";
         var myActionIn = "hide";
-        // $(':button:contains(My Button)').click(updatePickMe); // Need to set button ID first...
-        // $(".button-char:contains(pick-me)").on("click" , updatePickMe(buttonID)); // undefined problem
-        // $(".pick-me").on("click" , fuction()  {
-        // console.log("At ENTRY $('button').hasClass('pick-me') = " + $("button").hasClass("pick-me") );
-        // console.log("At ENTRY $('button#obiwan-k-sel').hasClass('pick-me') = " + $("button#obiwan-k-sel").hasClass("pick-me") );
         if ( ( $("button").hasClass("pick-me") === true ) &&
             ( playerChoseFighter === false ) ) {
             // Get the specific ID from the button clicked
@@ -182,20 +150,14 @@ $(document).ready(function(){
             // Configure vars for function call to show fighter chosen, hide others
             myClassPlayer = "pick-me";
             myActionIn = "hide";
-            // console.log("B4-1st-Remove $('button#obiwan-k-sel').hasClass('pick-me') = " + $("button" + buttonID).hasClass(myClassPlayer) );
             updatePickMe(buttonID, myClassPlayer, myActionIn); // WORKS?
-            // console.log("After-1st-Remove $('button#obiwan-k-sel').hasClass('pick-me') = " + $("button" + buttonID).hasClass(myClassPlayer) );
             // Modify buttonID and vars for second call to function to display enemies
-            buttonID += "-e";        /////// LEFT OFF HERE, THIS HAPPENS TWICE ???? APPARENTLY!!!
+            buttonID += "-e";
             myClassPlayer = "pick-enemy";
             myActionIn = "show";
-            // console.log("B4-2nd-Remove $('button#obiwan-k-sel-e').hasClass('pick-enemy') = " + $("button" + buttonID).hasClass(myClassPlayer) );
             updatePickMe(buttonID, myClassPlayer, myActionIn); // WORKS?
-            // console.log("After-2nd-Remove $('button#obiwan-k-sel-e').hasClass('pick-enemy') = " + $("button" + buttonID).hasClass(myClassPlayer) );
             
-            // console.log( "BEFORE IF in PICK-ME  $(this).attr('id') = " + $(this).attr("id"));
             if ( $(this).attr("id") === "obiwan-k-sel" ) { // Works for selecting via ID
-                // var lukeWarrior = new Warrior("lukeWarrior", "Luke Skywalker", 160, 4, 15, "pick-me", "block");
                 console.log( "INSIDE IF OBIWAN $(this).attr('id') = " + $(this).attr("id"));
                 player = obiWanWarrior;
                 player.role = "fighter";
@@ -224,18 +186,12 @@ $(document).ready(function(){
             // Set vars for function call, hide / move enemy picked to defender section
             myClassPlayer = "pick-enemy";
             myActionIn = "show";
-            // console.log("B4-1st-Remove $('button#obiwan-k-sel-e').hasClass('pick-enemy') = " + $("button" + buttonID).hasClass(myClassPlayer) );
             updatePickEnemy(buttonID, myClassPlayer, myActionIn); // WORKS?
-            // console.log("After-1st-Remove $('button#obiwan-k-sel-e').hasClass('pick-enemy') = " + $("button" + buttonID).hasClass(myClassPlayer) );
             buttonID += "-d";
             myClassPlayer = "pick-defender";
             myActionIn = "hide";
-            // console.log("B4-2nd-Remove $('button#obiwan-k-sel-e').hasClass('pick-enemy') = " + $("button" + buttonID).hasClass(myClassPlayer) );
             updatePickEnemy(buttonID, myClassPlayer, myActionIn); // WORKS?
-            // console.log("After-2nd-Remove $('button#obiwan-k-sel-e').hasClass('pick-enemy') = " + $("button" + buttonID).hasClass(myClassPlayer) );
-            // var objectID = obiWanWarrior.getObjectID(); // Not so much...
             
-            // console.log( "BEFORE IF in PICK-ENEMY $(this).attr('id') = " + $(this).attr("id"));
             if ( $(this).attr("id") === "obiwan-k-sel-e" ) { // Works for selecting via ID
                 console.log( "INSIDE IF OBIWAN $(this).attr('id') = " + $(this).attr("id"));
                 defender = obiWanWarrior;
@@ -261,6 +217,5 @@ $(document).ready(function(){
             console.log("At ENTRY: Not a 'pick-me' or 'pick-enemy' button class, need to pick fighter for player...");
             return ;
         }
-// changeHtmlName( objectID );
     } );
 } );
