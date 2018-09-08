@@ -37,21 +37,35 @@ $(document).ready(function(){
     };
 
     Warrior.prototype.checkStatus = function() {
-        if ( this.role === "fighter") { // This is the player's warrior!
+        if ( this.role === "fighter") { // Fighter's LEG, This is the player's warrior!
             if ( this.hp <= 0 ) {
                 console.log("Player's Warrior LOST. objectID.hp =" + this.objectID + "." + this.hp + ", Play Again?");
             } else {
                 console.log("Awesome, you're still in the game!");
             }
-        } else if (this.role === "defender" ){
-            if ( this.hp <= 0 ) {
+        } else if (this.role === "defender" ){ // Defender's LEG
+            if ( this.hp <= 0 ) { // Defender LOST
+                defender.role = "dead";
+                $("#" + defender.objectID + "-e-d").css("display" , "none");
                 player.enemiesLeft = player.enemiesLeft - 1;
                 console.log("Defender's Warrior, " + this.name + " LOST. objectID.hp =" + this.objectID + "." + this.hp);
                 console.log("Fighter's Warrior, " + player.getName() + ", WON. player.enemiesLeft =" + player.objectID + "." + player.enemiesLeft);
-                if ( player.enemiesLeft <= 0 ) {
-                    console.log("!!! YOU WON !!!")
-                } else {
+                // Update Screen for winning this round...
+                if ( player.enemiesLeft ) {
+                    playerChoseDefender = false;
                     console.log("Select next enemy...");
+                    $("#choose-enemy").css("color" , "red");
+                    var fighterText = "You as " + player.name + " HOSPITALIZED " + defender.name + " for the WIN of this round!";
+                    $("#fighter-text").text(fighterText);
+                    $("#fighter-text").css("font-size" , "20px");
+                    $("#fighter-text").css("color" , "green");
+                    var defenderText = "Look above to choose another enemy...";
+                    $("#defender-text").text(defenderText);
+                    $(".status-text").show(); // Show during attack stage of the game
+                } else {
+                    // Update Screen for this WIN
+                    console.log("!!! YOU WON !!!");
+                    $(".button-restart").show(); // Show during attack stage of the game
                 }
             }
         } else {
@@ -90,24 +104,24 @@ $(document).ready(function(){
         this.name = newHp;
     };
 
-    var obiWanWarrior = new Warrior("obiWanWarrior", "Obi Wan-Kenobi", 125, 6, 22, "pick-me", "block");
+    var obiWanWarrior = new Warrior("obiWanWarrior", "Obi Wan-Kenobi", 125, 7, 22, "pick-me", "block");
     // console.log("obiWanWarrior.name = " + obiWanWarrior.getName());
     // console.log("obiWanWarrior.objectID = " + obiWanWarrior.getObjectID() );
     // obiWanWarrior.printStats();
     $(".button-name-obiwan").text(obiWanWarrior.name);
     $(".button-hp-obiwan").text(obiWanWarrior.hp);
 
-    var lukeWarrior = new Warrior("lukeWarrior", "Luke Skywalker", 160, 4, 15, "pick-me", "block");
+    var lukeWarrior = new Warrior("lukeWarrior", "Luke Skywalker", 160, 6, 15, "pick-me", "block");
     // lukeWarrior.printStats();
     $(".button-name-luke").text(lukeWarrior.name);
     $(".button-hp-luke").text(lukeWarrior.hp);
 
-    var dSidiousWarrior = new Warrior("dSidiousWarrior", "Darth Sidious", 100, 10, 10, "pick-me", "block");
+    var dSidiousWarrior = new Warrior("dSidiousWarrior", "Darth Sidious", 140, 10, 10, "pick-me", "block");
     // dSidiousWarrior.printStats();
     $(".button-name-dsidious").text(dSidiousWarrior.name);
     $(".button-hp-dsidious").text(dSidiousWarrior.hp);
 
-    var dMaulWarrior = new Warrior("dMaulWarrior", "Darth Maul", 200, 2, 12, "pick-me", "block");
+    var dMaulWarrior = new Warrior("dMaulWarrior", "Darth Maul", 200, 5, 12, "pick-me", "block");
     // dMaulWarrior.printStats();
     $(".button-name-dmaul").text(dMaulWarrior.name);
     $(".button-hp-dmaul").text(dMaulWarrior.hp);
@@ -125,37 +139,54 @@ $(document).ready(function(){
     // Dont show enemies until after player chooses their fighter
     $(".pick-enemy").hide();
 
+    
     ///////////////////
     // ATTACK BUTTON //
     ///////////////////
+    var playerChoseFighter = false; // Set at beginning of game
+    var playerChoseDefender = false; // Set at beginning of game and at restart!
     $(".button-attack").mouseup(function(){
-        $(this).after($("#arrow").css("display", "none") );
+    $(this).after($("#arrow").css("display", "none") );
     } );
     $(".button-attack").mousedown(function(){
         $(this).after($("#arrow").css("display", "block") );
+        if ( playerChoseFighter && playerChoseDefender ) {
 
-        // Update Defender Stats first to get current attack power from fighter to subtract
-        defender.calcStats();
-        // Update Player / Fighter
-        player.calcStats();
+            // Update Defender Stats first to get current attack power from fighter to subtract
+            defender.calcStats();
 
-        // Check Player / Fighter Status
-        player.checkStatus();
-        console.log("player.getObjectID() = " + player.getObjectID());
-        // console.log("player.hp.toString() = " + player.hp.toString());
-        console.log("player.getHp() = " + player.getHp());
-        player.printStats();
-        // $(".player-picked .button-hp").text(player.hp.toString()); // player-picked
-        $(".player-picked .button-hp").text(player.getHp()); // player-picked
+            // Update Screen from this attack
+            var fighterText = "You as " + player.name + " hit " + defender.name + " for " + player.getaPwr() + " damage.";
+            $("#fighter-text").text(fighterText);
+            var defenderText = "Defender " + defender.name + " hit you as " + player.name + " for " + defender.getCaPwr() + " damage.";
+            $("#defender-text").text(defenderText);
+            // $(".status-text").css("display", "block"); // Research this method
+            // $(".button-restart").css("display", "none");
+            $(".status-text").show(); // Show during attack stage of the game
+            // $(".status-text").hide(); // Hide during ??? stage of the game
 
-        // Check Defender's Status
-        defender.checkStatus();
-        console.log("defender.getObjectID() = " + defender.getObjectID());
-        // console.log("defender.hp.toString() = " + defender.hp.toString());
-        console.log("defender.getHp() = " + defender.getHp());
-        defender.printStats();
-        // $(".defender-picked .button-hp").text(defender.hp.toString()); // defender-picked
-        $(".defender-picked .button-hp").text(defender.getHp()); // defender-picked
+
+            // Update Player / Fighter
+            player.calcStats();
+
+            // Check Player / Fighter Status
+            player.checkStatus();
+            console.log("player.getObjectID() = " + player.getObjectID());
+            // console.log("player.hp.toString() = " + player.hp.toString());
+            console.log("player.getHp() = " + player.getHp());
+            player.printStats();
+            // $(".player-picked .button-hp").text(player.hp.toString()); // player-picked
+            $(".player-picked .button-hp").text(player.getHp()); // player-picked
+
+            // Check Defender's Status
+            defender.checkStatus();
+            console.log("defender.getObjectID() = " + defender.getObjectID());
+            // console.log("defender.hp.toString() = " + defender.hp.toString());
+            console.log("defender.getHp() = " + defender.getHp());
+            defender.printStats();
+            // $(".defender-picked .button-hp").text(defender.hp.toString()); // defender-picked
+            $(".defender-picked .button-hp").text(defender.getHp()); // defender-picked
+        }
     } );
     
     function updatePickMe (buttonID, myClass, myAction) { // myClass = pick-me 1st time, pick-enemy 2nd time
@@ -198,7 +229,6 @@ $(document).ready(function(){
     };
 
     
-    var playerChoseFighter = false;
     $(".button-char").on("click", function() { // WORKS for CLASS of all buttons-char
         var buttonID = "";
         var myClassPlayer = "";
@@ -210,69 +240,85 @@ $(document).ready(function(){
             // Configure vars for function call to show fighter chosen, hide others
             myClassPlayer = "pick-me";
             myActionIn = "hide";
-            updatePickMe(buttonID, myClassPlayer, myActionIn); // WORKS?
+            updatePickMe(buttonID, myClassPlayer, myActionIn); // WORKS
             // Modify buttonID and vars for second call to function to display enemies
             buttonID += "-e";
             myClassPlayer = "pick-enemy";
             myActionIn = "show";
-            updatePickMe(buttonID, myClassPlayer, myActionIn); // WORKS?
+            updatePickMe(buttonID, myClassPlayer, myActionIn); // WORKS
             
-            if ( $(this).attr("id") === "obiwan-k-sel" ) { // Works for selecting via ID
+            if ( $(this).attr("id") === "obiWanWarrior" ) { // Works for selecting via ID
                 console.log( "INSIDE IF OBIWAN $(this).attr('id') = " + $(this).attr("id"));
                 player = obiWanWarrior;
                 player.role = "fighter";
                 player.printStats();
-            } else if ( $(this).attr("id") === "luke-s-sel" ) {
+            } else if ( $(this).attr("id") === "lukeWarrior" ) {
                 console.log( "INSIDE IF LUKE $(this).attr('id') = " + $(this).attr("id"));
                 player = lukeWarrior;
                 player.role = "fighter";
                 player.printStats();
-            } else if ( $(this).attr("id") === "d-sidious-sel" ) {
+            } else if ( $(this).attr("id") === "dSidiousWarrior" ) {
                 console.log( "INSIDE IF D-SIDIOUS $(this).attr('id') = " + $(this).attr("id"));
                 player = dSidiousWarrior;
                 player.role = "fighter";
                 player.printStats();
-            } else if ( $(this).attr("id") === "d-maul-sel" ) {
+            } else if ( $(this).attr("id") === "dMaulWarrior" ) {
                 console.log( "INSIDE IF D-MAUL $(this).attr('id') = " + $(this).attr("id"));
                 player = dMaulWarrior;
                 player.role = "fighter";
                 player.printStats();
             }
             playerChoseFighter = true;
+            $(".button-restart").hide(); // Hide during ??? stage of the game
         } else if ( ( $("button").hasClass("pick-enemy") === true ) &&
                 playerChoseFighter ) {
-            // Get the specific ID from the button clicked
-            buttonID = "#" + $(this).attr("id");
-            // Set vars for function call, hide / move enemy picked to defender section
-            myClassPlayer = "pick-enemy";
-            myActionIn = "show";
-            updatePickEnemy(buttonID, myClassPlayer, myActionIn); // WORKS?
-            buttonID += "-d";
-            myClassPlayer = "pick-defender";
-            myActionIn = "hide";
-            updatePickEnemy(buttonID, myClassPlayer, myActionIn); // WORKS?
-            
-            if ( $(this).attr("id") === "obiwan-k-sel-e" ) { // Works for selecting via ID
-                console.log( "INSIDE IF OBIWAN $(this).attr('id') = " + $(this).attr("id"));
-                defender = obiWanWarrior;
-                defender.role = "defender";
-                defender.printStats();
-            } else if ( $(this).attr("id") === "luke-s-sel-e" ) {
-                console.log( "INSIDE IF LUKE $(this).attr('id') = " + $(this).attr("id"));
-                defender = lukeWarrior;
-                defender.role = "defender";
-                defender.printStats();
-            } else if ( $(this).attr("id") === "d-sidious-sel-e" ) {
-                console.log( "INSIDE IF D-SIDIOUS $(this).attr('id') = " + $(this).attr("id"));
-                defender = dSidiousWarrior;
-                defender.role = "defender";
-                defender.printStats();
-            } else if ( $(this).attr("id") === "d-maul-sel-e" ) {
-                console.log( "INSIDE IF D-MAUL $(this).attr('id') = " + $(this).attr("id"));
-                defender = dMaulWarrior;
-                defender.role = "defender";
-                defender.printStats();
-            }
+            $("#choose-enemy").css("color" , "black");
+            var fighterText = "";
+            $("#fighter-text").text(fighterText);
+            $("#fighter-text").css("font-size" , "14px");
+            $("#fighter-text").css("color" , "black");
+            var defenderText = "";
+            $("#defender-text").text(defenderText);
+            $(".status-text").show(); // Show during attack stage of the game
+
+            // DON'T Select a enemy if one is active...
+            if ( playerChoseFighter && playerChoseDefender ) {
+                return false;
+            } else {
+                // Get the specific ID from the button clicked
+                buttonID = "#" + $(this).attr("id");
+                // Set vars for function call, hide / move enemy picked to defender section
+                myClassPlayer = "pick-enemy";
+                myActionIn = "show";
+                updatePickEnemy(buttonID, myClassPlayer, myActionIn); // WORKS?
+                buttonID += "-d";
+                myClassPlayer = "pick-defender";
+                myActionIn = "hide";
+                updatePickEnemy(buttonID, myClassPlayer, myActionIn); // WORKS?
+                
+                if ( $(this).attr("id") === "obiWanWarrior-e" ) { // Works for selecting via ID
+                    console.log( "INSIDE IF OBIWAN $(this).attr('id') = " + $(this).attr("id"));
+                    defender = obiWanWarrior;
+                    defender.role = "defender";
+                    defender.printStats();
+                } else if ( $(this).attr("id") === "lukeWarrior-e" ) {
+                    console.log( "INSIDE IF LUKE $(this).attr('id') = " + $(this).attr("id"));
+                    defender = lukeWarrior;
+                    defender.role = "defender";
+                    defender.printStats();
+                } else if ( $(this).attr("id") === "dSidiousWarrior-e" ) {
+                    console.log( "INSIDE IF D-SIDIOUS $(this).attr('id') = " + $(this).attr("id"));
+                    defender = dSidiousWarrior;
+                    defender.role = "defender";
+                    defender.printStats();
+                } else if ( $(this).attr("id") === "dMaulWarrior-e" ) {
+                    console.log( "INSIDE IF D-MAUL $(this).attr('id') = " + $(this).attr("id"));
+                    defender = dMaulWarrior;
+                    defender.role = "defender";
+                    defender.printStats();
+                };
+            };
+            playerChoseDefender = true;
         } else {
             console.log("At ENTRY: Not a 'pick-me' or 'pick-enemy' button class, need to pick fighter for player...");
             return ;

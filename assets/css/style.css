@@ -61,6 +61,7 @@ body, html {
     font-family: 'Bungee', cursive;
     font-size: 24px;
     font-weight: 900;
+    font-style: italic;
     margin: 0px;
 }
 
@@ -68,7 +69,7 @@ body, html {
     font-family: 'Bungee', cursive !Important;
     text-align: center;
     font-weight: 900;
-    font-family: 'Times New Roman', Times, serif;
+    /* font-family: 'Times New Roman', Times, serif; */
     font-size: 18px;
     font-style: italic;
     color: white;
@@ -77,6 +78,34 @@ body, html {
     background-color: red;
 }
 
+.status-text {
+    clear: both;
+    display: none;
+    font-family: 'Bungee', cursive;
+    font-size: 14px;
+    font-style: italic;
+}
+
+/* #fighter-text {
+    display:none;
+}
+
+#defender-text {
+    display:none;
+} */
+
+.button-restart {
+    display:none;
+    font-family: 'Bungee', cursive;
+    text-align: center;
+    font-size: 14px;
+    font-style: italic;
+    color: white;
+    margin-top: 0px;
+    padding: 0px;
+    background-color: green;
+
+}
 
 /****************/
 /* Page Buttons */
@@ -84,7 +113,8 @@ body, html {
 .button-char {
     border:3px green solid;
     float: left;
-    block-size: 120px;
+    min-width: 10%;
+    min-height: 5%;
 }
 
 .pick-me, .player-picked {

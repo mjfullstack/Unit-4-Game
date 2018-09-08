@@ -46,23 +46,23 @@
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <!-- <div> -->
                     <!-- General class of button-char(acter), group  class of pick-me, id specific to warrior... -->
-                <button class="button-char pick-me" id="obiwan-k-sel">
+                <button class="button-char pick-me" id="obiWanWarrior">
                     <p class ="button-name button-name-obiwan">Name</p>
                     <img id="obiwan-k-pic" src="./assets/images/ObiWanKenobi.jpg" alt="ObiWanKenobi">
                     <p class ="button-hp button-hp-obiwan">HP</p>
                 </button>
                 <!-- </div> -->
-                <button  class="button-char pick-me" id="luke-s-sel">
+                <button  class="button-char pick-me" id="lukeWarrior">
                     <p class ="button-name button-name-luke">Name</p>
                     <img id="luke-s-pic" src="./assets/images/LukeS.jpg" alt="luke-s">
                     <p class ="button-hp button-hp-luke">HP</p>
                 </button>
-                <button class="button-char pick-me" id="d-sidious-sel">
+                <button class="button-char pick-me" id="dSidiousWarrior">
                     <p class ="button-name button-name-dsidious">Name</p>
                     <img id="d-sidious-pic" src="./assets/images/DarthSidious.jpg" alt="DrSidious">
                     <p class ="button-hp button-hp-dsidious">HP</p>
                 </button>
-                <button  class="button-char pick-me" id="d-maul-sel">
+                <button  class="button-char pick-me" id="dMaulWarrior">
                     <p class ="button-name button-name-dmaul">Name</p>
                     <img id="d-maul-pic" src="./assets/images/DarthMaul.jpg" alt="DrMaul">
                     <p class ="button-hp button-hp-dmaul">HP</p>
@@ -77,23 +77,23 @@
         </div>
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-4">
-                <button class="button-char pick-enemy" id="obiwan-k-sel-e">  <!-- style="width: 150px; height: 110px;" -->
+                <button class="button-char pick-enemy" id="obiWanWarrior-e">  <!-- style="width: 150px; height: 110px;" -->
                     <!-- <p class ="button-name-obiwan">Name</p> -->
                     <p class ="button-name button-name-obiwan">Name</p>
                     <img id="e-obiwan-k" src="./assets/images/ObiWanKenobi.jpg" alt="ObiWanKenobi">
                     <p class ="button-hp button-hp-obiwan">HP</p>
                 </button>
-                <button  class="button-char pick-enemy" id="luke-s-sel-e">
+                <button  class="button-char pick-enemy" id="lukeWarrior-e">
                     <p class ="button-name button-name-luke">Name</p>
                     <img id="e-luke-s" src="./assets/images/LukeS.jpg" alt="luke-s">
                     <p class ="button-hp button-hp-luke">HP</p>
                 </button>
-                <button class="button-char pick-enemy" id="d-sidious-sel-e">
+                <button class="button-char pick-enemy" id="dSidiousWarrior-e">
                     <p class ="button-name button-name-dsidious">Name</p>
                     <img id="e-d-sidious" src="./assets/images/DarthSidious.jpg" alt="DrSidious">
                     <p class ="button-hp button-hp-dsidious">HP</p>
                 </button>
-                <button  class="button-char pick-enemy" id="d-maul-sel-e">
+                <button  class="button-char pick-enemy" id="dMaulWarrior-e">
                     <p class ="button-name button-name-dmaul">Name</p>
                     <img id="e-d-maul" src="./assets/images/DarthMaul.jpg" alt="DrMaul">
                     <p class ="button-hp button-hp-dmaul">HP</p>
@@ -121,27 +121,38 @@
             <div class="col-lg-6">
                 <p class="choice-text" id="choose-defender">Defender...</p>
             </div>
+        </div>
+        <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-4">
-                <button class="button-char pick-defender" id="obiwan-k-sel-e-d">  <!-- style="width: 150px; height: 110px;" -->
+                <button class="button-char pick-defender" id="obiWanWarrior-e-d">  <!-- style="width: 150px; height: 110px;" -->
                     <p class ="button-name button-name-obiwan">Name</p>
                     <img id="d-obiwan-k" src="./assets/images/ObiWanKenobi.jpg" alt="ObiWanKenobi">
                     <p class ="button-hp button-hp-obiwan">HP</p>
                 </button>
-                <button  class="button-char pick-defender" id="luke-s-sel-e-d">
+                <button  class="button-char pick-defender" id="lukeWarrior-e-d">
                     <p class ="button-name button-name-luke">Name</p>
                     <img id="d-luke-s" src="./assets/images/LukeS.jpg" alt="luke-s">
                     <p class ="button-hp button-hp-luke">HP</p>
                 </button>
-                <button class="button-char pick-defender" id="d-sidious-sel-e-d">
+                <button class="button-char pick-defender" id="dSidiousWarrior-e-d">
                     <p class ="button-name button-name-dsidious">Name</p>
                     <img id="d-d-sidious" src="./assets/images/DarthSidious.jpg" alt="DrSidious">
                     <p class ="button-hp button-hp-dsidious">HP</p>
                 </button>
-                <button  class="button-char pick-defender" id="d-maul-sel-e-d">
+                <button  class="button-char pick-defender" id="dMaulWarrior-e-d">
                     <p class ="button-name button-name-dmaul">Name</p>
                     <img id="d-d-maul" src="./assets/images/DarthMaul.jpg" alt="DrMaul">
                     <p class ="button-hp button-hp-dmaul">HP</p>
                 </button>
+            </div>
+        </div>
+        <div class="row"> <!-- Game Status Display -->
+            <div class="col-lg-6">
+                <p class="status-text" id="fighter-text">You as ... hit ... for X damage</p>
+                <p class="status-text" id="defender-text">Defender ... hit you for Y damage</p>
+            </div>
+            <div class="col-lg-6">
+                <button style="width: 150px; height: 30px;" class="button-restart">Play Again?</button>
             </div>
         </div>
     </div>
