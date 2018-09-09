@@ -7,3 +7,4 @@ jQuery &amp; bootstrap based game
 *9/07/18 Finalized scoring and title display. Next is score calculation per spec
 *9/07/18 Scoring works for ONE enemy. Next is multiple enemies and re-start button.
 *9/07/18 Can now fight multiple warriors. Next is the play again functionality.
+*9/08/18 Added play again button. Still to fix is players hp on second round who was player in first round.
